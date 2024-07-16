@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Sinif>
+@{
+    ViewData["Title"] = "Sınıf İşlemleri";
+}
+
+<h1>Sınıf İşlemleri</h1>
+<!-- Sinif Ekleme Formu -->
+<div class="mb-3">
+    <form asp-action="SinifEkle" asp-controller="Sinif" method="post" class="row g-3">
+        <div class="col-md-4">
+            <label for="SinifAd" class="form-label">Sınıf Adı</label>
+            <input type="text" class="form-control" id="SinifAd" name="SinifAd" required>
+        </div>
+        <div class="col-md-4">
+            <label for="Kontenjan" class="form-label">Kontenjan</label>
+            <input type="number" class="form-control" id="Kontenjan" name="Kontenjan" required>
+        </div>
+        <div class="col-md-4 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary">Ekle</button>
+        </div>
+    </form>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Sınıf Adı</th>
+            <th>Kontenjan</th>
+            <th align="center" colspan="3">İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.SinifAd</td>
+                <td>@item.Kontenjan</td>
+                <td width="100px" class="btn btn-danger"><a href="@Url.Action("SinifSil", "Sinif", new { id = item.SinifId })">Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

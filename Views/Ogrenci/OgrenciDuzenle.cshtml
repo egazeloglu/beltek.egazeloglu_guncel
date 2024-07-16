@@ -1,0 +1,45 @@
+﻿@model Ogrenci
+@{
+    ViewData["Title"] = "OgrenciDuzenle";
+}
+
+<h1>Öğrenci Düzenle</h1>
+
+<div class="container mt-5">
+    
+        <div class="col-md-10">
+            <h3>Öğrenci Düzenle</h3>
+            <form asp-action="OgrenciDuzenle" asp-controller="Ogrenci" method="post">
+                <input type="hidden" asp-for="OgrenciId" />
+
+                <div class="mb-3">
+                    <label asp-for="OgrenciAd" class="form-label"></label>
+                    <input asp-for="OgrenciAd" class="form-control" />
+                    <span asp-validation-for="OgrenciAd" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="OgrenciSoyad" class="form-label"></label>
+                    <input asp-for="OgrenciSoyad" class="form-control" />
+                    <span asp-validation-for="OgrenciSoyad" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="OgrenciNumara" class="form-label"></label>
+                    <input asp-for="OgrenciNumara" class="form-control" />
+                    <span asp-validation-for="OgrenciNumara" class="text-danger"></span>
+                </div>
+
+            <div class="mb-3">
+                <label asp-for="SinifId" class="form-label">Sınıf Adı (Listeden Seçerek degiştirebilirsiniz.)</label>
+                <select asp-for="SinifId" asp-items="ViewBag.Siniflar" class="form-control"></select>
+                <span asp-validation-for="SinifId" class="text-danger"></span>
+            </div>
+
+                <div class="mb-3">
+                    <input type="submit" value="Kaydet" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
